@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PropertyList>
+	<path>LFIP-hangar.ac</path>
+	
+	<animation>
+		<type>pick</type>
+		<object-name>Gate</object-name>
+		<action>
+			<button>0</button>
+			<repeatable type="bool">false</repeatable>
+			<binding>
+				<command>nasal</command>
+				<script><![CDATA[
+				var open = getprop("/scenery/airport/hangar/gate/open");
+				if (open == nil or open == 0) {
+					setprop("/scenery/airport/hangar/gate/open", 1)
+				} elsif (open == 1) {
+					setprop("/scenery/airport/hangar/gate/open", 0);
+				}
+				]]></script>
+			</binding>
+		</action>
+	</animation>
+	
+	<animation>
+		<object-name>Gate</object-name>
+		<enable-hot type="bool">false</enable-hot>
+	</animation>
+	<animation>
+		<type>rotate</type>
+		<object-name>Gate</object-name>
+		<prop>/scenery/airport/hangar/gate/open</prop>
+		<factor>90</factor>
+		<axis>
+			<object-name>GateRotationAxis</object-name>
+		</axis>
+	</animation>
+	<animation>
+		<type>material</type>
+		<object-name>Roof</object-name>
+		<shininess>120</shininess>
+	</animation>
+</PropertyList>
+
