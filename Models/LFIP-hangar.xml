@@ -12,12 +12,8 @@
 			<binding>
 				<command>nasal</command>
 				<script><![CDATA[
-				var open = getprop("/scenery/airport/hangar/gate/open");
-				if (open == nil or open == 0) {
-					setprop("/scenery/airport/hangar/gate/open", 1)
-				} elsif (open == 1) {
-					setprop("/scenery/airport/hangar/gate/open", 0);
-				}
+					var open = getprop("/scenery/airport/hangar/gate/open") or 0;
+					interpolate("/scenery/airport/hangar/gate/open", 1 - open, 3);
 				]]></script>
 			</binding>
 		</action>
@@ -30,8 +26,8 @@
 	<animation>
 		<type>rotate</type>
 		<object-name>Gate</object-name>
-		<prop>/scenery/airport/hangar/gate/open</prop>
-		<factor>90</factor>
+		<property>/scenery/airport/hangar/gate/open</property>
+		<factor>-90</factor>
 		<axis>
 			<object-name>GateRotationAxis</object-name>
 		</axis>
@@ -39,7 +35,7 @@
 	<animation>
 		<type>material</type>
 		<object-name>Roof</object-name>
-		<shininess>120</shininess>
+		<shininess>128</shininess>
 	</animation>
 </PropertyList>
 
